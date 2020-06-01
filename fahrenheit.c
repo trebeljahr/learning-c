@@ -21,6 +21,17 @@ void fahrenheitToCelsius()
     printf("----------------------------------\n");
 }
 
+void line()
+{
+    printf("----------------------------------\n");
+}
+void header(char *header)
+{
+    line();
+    printf("%s\n", header);
+    line();
+}
+
 void celsiusToFahrenheit()
 {
     float fahr, celsius;
@@ -29,20 +40,33 @@ void celsiusToFahrenheit()
     upper = 60;  /* upper limit */
     step = 5;    /* step size */
     celsius = lower;
-    printf("----------------------------------\n");
-    printf("Celsius to Fahrenheit Conversion\n");
-    printf("----------------------------------\n");
+    header();
     while (celsius <= upper)
     {
         fahr = celsius * 9 / 5 + 32;
         printf("°C:%3.0f | °F:%6.2f\n", celsius, fahr);
         celsius = celsius + step;
     }
-    printf("----------------------------------\n");
+    line();
+}
+
+void betterConverter()
+{
+    int fahr;
+    header();
+    for (fahr = 0; fahr <= 300; fahr = fahr + 20)
+        printf("°F: %3d | °C: %6.1f\n", fahr, (5.0 / 9.0) * (fahr - 32));
+    line();
+    int celsius;
+    header();
+    for (celsius = -40; celsius <= 60; celsius = celsius + 5)
+        printf("°C: %3d | °F: %6.1f\n", celsius, celsius * 9 / 5 + 32);
+    line();
 }
 
 void main()
 {
     fahrenheitToCelsius();
     celsiusToFahrenheit();
+    betterConverter();
 }
