@@ -57,7 +57,7 @@ void betterConverter()
     line();
     float celsius;
     header("Celsius to Fahrenheit Conversion");
-    for (celsius = -40; celsius <= 60; celsius = celsius + 6)
+    for (celsius = -60; celsius <= 60; celsius = celsius + 6)
         printf("°C:%3.0f | °F:%6.2f\n", celsius, (celsius * 9 / 5) + 32);
     line();
 }
@@ -71,7 +71,7 @@ void backwardConverter()
     line();
     float celsius;
     header("Celsius to Fahrenheit Conversion");
-    for (celsius = 60; celsius >= -40; celsius = celsius - 6)
+    for (celsius = 60; celsius >= -60; celsius = celsius - 6)
         printf("°C:%3.0f | °F:%6.2f\n", celsius, (celsius * 9 / 5) + 32);
     line();
 }
