@@ -4,18 +4,27 @@
 
 #define FILTERLENGTH 10
 
-void concatenate_string(char *original, char *add)
+int getLength(char str[])
 {
-    while (*original)
-        original++;
+    int c;
 
-    while (*add)
+    c = 0;
+
+    while (str[c] != '\0')
     {
-        *original = *add;
-        add++;
-        original++;
+        c++;
     }
-    *original = '\0';
+    return c;
+}
+
+void append(char to[], char from[])
+{
+    int i;
+    i = 0;
+    while ((to[i + getLength(from)] = from[i]) != '\0')
+    {
+        ++i;
+    }
 }
 
 void main()
@@ -28,11 +37,12 @@ void main()
     {
         if (read - 1 > FILTERLENGTH)
         {
-            concatenate_string(longerLines, line);
+            longerLines = realloc(longerLines, read + 1);
+            append(longerLines, line);
         }
     }
     printf("\n-------------------------------------------------------------");
-    printf("\nThese lines had over %d chars: %s", FILTERLENGTH, longerLines);
+    printf("\nThese lines had over %d chars: %s\n", FILTERLENGTH, longerLines);
 
     free(longerLines);
 }
