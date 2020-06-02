@@ -4,6 +4,20 @@
 
 #define FILTERLENGTH 10
 
+void concatenate_string(char *original, char *add)
+{
+    while (*original)
+        original++;
+
+    while (*add)
+    {
+        *original = *add;
+        add++;
+        original++;
+    }
+    *original = '\0';
+}
+
 void main()
 {
     char *line = NULL;
@@ -14,20 +28,7 @@ void main()
     {
         if (read - 1 > FILTERLENGTH)
         {
-            int len = 0;
-            while (longerLines[len] != '\0')
-            {
-                len++;
-            }
-            longerLines = realloc(longerLines, len + read + 1);
-
-            int d = 0;
-            while (*line != '\0')
-            {
-                longerLines[len] = line[d];
-                d++;
-                len++;
-            }
+            concatenate_string(longerLines, line);
         }
     }
     printf("\n-------------------------------------------------------------");
