@@ -2,17 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define FILTERLENGTH 5
-
-void copy(char to[], char from[])
-{
-    int i;
-    i = 0;
-    while ((to[i] = from[i]) != '\0')
-    {
-        ++i;
-    }
-}
+#define FILTERLENGTH 80
 
 void printLine()
 {
