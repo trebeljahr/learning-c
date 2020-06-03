@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define FILTERLENGTH 5
 
@@ -30,22 +31,15 @@ void main()
     {
         if (read - 1 > FILTERLENGTH)
         {
-            if (read > maxRead)
-                maxRead = read;
-            longerLines = realloc(longerLines, l + 1);
-            for (int i = 0; i < l + 1; i++)
-                longerLines[i] = realloc(longerLines[i], sizeof(maxRead) + 1);
-            copy(longerLines[l], line);
-            printf("%d \n", l);
-            printf("%s \n", longerLines[l]);
-            ++l;
+            longerLines = (char **)realloc(longerLines, (l + 1) * sizeof(char *));
+            longerLines[l++] = strdup(line);
         }
     }
     printLine();
     printf("These lines had over %d chars:\n", FILTERLENGTH);
     for (int i = 0; i < l; i++)
     {
-        printf("%s \n", longerLines[i]);
+        printf("%s", longerLines[i]);
         free(longerLines[i]);
     }
     printLine();
