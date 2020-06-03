@@ -13,13 +13,18 @@ void copy(char to[], char from[])
     }
 }
 
+void printLine()
+{
+    printf("\n-------------------------------------------------------------\n");
+}
+
 void main()
 {
     char *line = NULL;
     char **longerLines;
     size_t length = 0;
     ssize_t read;
-    int l = 1;
+    int l = 0;
     while ((read = getline(&line, &length, stdin)) != -1)
     {
         if (read - 1 > FILTERLENGTH)
@@ -31,12 +36,13 @@ void main()
             ++l;
         }
     }
-    printf("\n-------------------------------------------------------------");
-    printf("\nThese lines had over %d chars: \n", FILTERLENGTH);
+    printLine();
+    printf("These lines had over %d chars:\n", FILTERLENGTH);
     for (int i = 0; i < l; i++)
     {
-        printf("%s\n ", longerLines[i]);
+        printf("%s\n", longerLines[i]);
         free(longerLines[i]);
     }
+    printLine();
     free(longerLines);
 }
